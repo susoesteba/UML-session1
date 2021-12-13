@@ -14,3 +14,11 @@ km = km.assignment_step()
 km.plot("1st assignment")
 km = km.updating_step().assignment_step()
 km.plot("2nd assignment")
+
+mean_ = Kmeans(X, K=1)
+mean_.set_centers(np.array([X[0,:]]))
+for i in range(X.shape[0]):
+  x = X[i,:]
+  mean_ = mean_.sequential_step(x, 1.0/(i+1))
+
+mean_.plot()
